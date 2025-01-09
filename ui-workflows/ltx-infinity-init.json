@@ -1,0 +1,2927 @@
+{
+  "last_node_id": 622,
+  "last_link_id": 974,
+  "nodes": [
+    {
+      "id": 132,
+      "type": "CLIPVisionEncode",
+      "pos": [
+        -12.692377090454102,
+        1416
+      ],
+      "size": [
+        362.0671081542969,
+        78
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 178
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP_VISION_OUTPUT",
+          "type": "CLIP_VISION_OUTPUT",
+          "links": [
+            180
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionEncode"
+      },
+      "widgets_values": [
+        "center"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 123,
+      "type": "StyleModelLoader",
+      "pos": [
+        -12.692377090454102,
+        1276
+      ],
+      "size": [
+        362.0671081542969,
+        66.5030517578125
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE_MODEL",
+          "type": "STYLE_MODEL",
+          "links": [
+            175
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StyleModelLoader"
+      },
+      "widgets_values": [
+        "flux1-redux-dev.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 122,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        -12.692377090454102,
+        1146
+      ],
+      "size": [
+        362.0671081542969,
+        62.379886627197266
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            178
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "sigclip_vision_patch14_384.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 134,
+      "type": "CLIPTextEncode",
+      "pos": [
+        747.3076171875,
+        946
+      ],
+      "size": [
+        320,
+        280.7449035644531
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 181
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 385,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            182,
+            183
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a red haired woman standing in front of mechanical structure, the frame is half built, a few display segments are already mounted, but people workers are still working on it, tools on the floor, heavy machinery in the background"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 16,
+      "type": "KSamplerSelect",
+      "pos": [
+        1465.3076171875,
+        1110
+      ],
+      "size": [
+        262.22222900390625,
+        60
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            170,
+            690
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "SAMPLER"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 268,
+      "type": "SetNode",
+      "pos": [
+        1800,
+        -420
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 363
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_STEPS",
+      "properties": {
+        "previousName": "STEPS"
+      },
+      "widgets_values": [
+        "STEPS"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 60,
+      "type": "FluxGuidance",
+      "pos": [
+        1145.3076171875,
+        920
+      ],
+      "size": [
+        211.60000610351562,
+        60
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 183,
+          "label": "conditioning"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            87
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "CONDITIONING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        3.5
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 513,
+      "type": "SetNode",
+      "pos": [
+        1960,
+        -580
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 782
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FLUX SEED INT",
+      "properties": {
+        "previousName": "FLUX SEED INT"
+      },
+      "widgets_values": [
+        "FLUX SEED INT"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 441,
+      "type": "SetNode",
+      "pos": [
+        1960,
+        -620
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "link": 698
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FLUX_BASE_NOISE",
+      "properties": {
+        "previousName": "FLUX_BASE_NOISE"
+      },
+      "widgets_values": [
+        "FLUX_BASE_NOISE"
+      ],
+      "color": "#2e2e2e",
+      "bgcolor": "#242121"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1465.3076171875,
+        1410
+      ],
+      "size": [
+        262.22222900390625,
+        46
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 173,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            861
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 495,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        600
+      ],
+      "size": [
+        321.5306701660156,
+        76
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            767
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "VIDEO STRING CONSTANT (PARTS)",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "MERGED/LTXV_"
+      ]
+    },
+    {
+      "id": 466,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        480
+      ],
+      "size": [
+        321.5306701660156,
+        76
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            749
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "VIDEO STRING CONSTANT (PARTS)",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "PARTIAL/LTXV_"
+      ]
+    },
+    {
+      "id": 474,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        360
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 747
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_PROJECT NAME",
+      "properties": {
+        "previousName": "PROJECT NAME"
+      },
+      "widgets_values": [
+        "PROJECT NAME"
+      ]
+    },
+    {
+      "id": 475,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        410
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 748
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_/",
+      "properties": {
+        "previousName": "/"
+      },
+      "widgets_values": [
+        "/"
+      ]
+    },
+    {
+      "id": 476,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        470
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 749
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_VIDEO START PARTIAL",
+      "properties": {
+        "previousName": "VIDEO START PARTIAL"
+      },
+      "widgets_values": [
+        "VIDEO START PARTIAL"
+      ]
+    },
+    {
+      "id": 496,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        520
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 767
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_VIDEO START MERGED",
+      "properties": {
+        "previousName": "VIDEO START MERGED"
+      },
+      "widgets_values": [
+        "VIDEO START MERGED"
+      ]
+    },
+    {
+      "id": 575,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        570
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 879
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_IMAGE START",
+      "properties": {
+        "previousName": "IMAGE START"
+      },
+      "widgets_values": [
+        "IMAGE START"
+      ]
+    },
+    {
+      "id": 258,
+      "type": "SetNode",
+      "pos": [
+        1820,
+        -300
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 347
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FRAMES",
+      "properties": {
+        "previousName": "FRAMES"
+      },
+      "widgets_values": [
+        "FRAMES"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 470,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        363
+      ],
+      "size": [
+        321.5306701660156,
+        84.82450866699219
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            748
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "/",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "/"
+      ]
+    },
+    {
+      "id": 464,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        242
+      ],
+      "size": [
+        321.5306701660156,
+        84.82450866699219
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            747
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "PROJECT NAME",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "LG001"
+      ]
+    },
+    {
+      "id": 467,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        123
+      ],
+      "size": [
+        321.5306701660156,
+        84.82450866699219
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            746
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "BASE_FOLDER",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "LTXV_LONG_GENS/"
+      ]
+    },
+    {
+      "id": 312,
+      "type": "SetNode",
+      "pos": [
+        1430,
+        -330
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "link": 457
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_LTXV_MODEL",
+      "properties": {
+        "previousName": "LTXV_MODEL"
+      },
+      "widgets_values": [
+        "LTXV_MODEL"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 257,
+      "type": "easy int",
+      "pos": [
+        1630,
+        -380
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "int",
+          "type": "INT",
+          "links": [
+            347
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "FRAMES",
+      "properties": {
+        "Node name for S&R": "easy int"
+      },
+      "widgets_values": [
+        253
+      ]
+    },
+    {
+      "id": 419,
+      "type": "easy float",
+      "pos": [
+        1630,
+        -250
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "float",
+          "type": "FLOAT",
+          "links": [
+            675
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "RESTORE DENOISE",
+      "properties": {
+        "Node name for S&R": "easy float"
+      },
+      "widgets_values": [
+        -4.82
+      ]
+    },
+    {
+      "id": 420,
+      "type": "SetNode",
+      "pos": [
+        1817.7200927734375,
+        -155.70175170898438
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "link": 675
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_DENOISE",
+      "properties": {
+        "previousName": "DENOISE"
+      },
+      "widgets_values": [
+        "DENOISE"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 424,
+      "type": "easy int",
+      "pos": [
+        1630,
+        -114
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "int",
+          "type": "INT",
+          "links": [
+            679
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "RESTORE STEPS",
+      "properties": {
+        "Node name for S&R": "easy int"
+      },
+      "widgets_values": [
+        15
+      ]
+    },
+    {
+      "id": 425,
+      "type": "SetNode",
+      "pos": [
+        1805.175537109375,
+        -18.333383560180664
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 679
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_MID_STEPS",
+      "properties": {
+        "previousName": "MID_STEPS"
+      },
+      "widgets_values": [
+        "MID_STEPS"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 326,
+      "type": "ModifyLTXModel",
+      "pos": [
+        1364.7593994140625,
+        -701.326904296875
+      ],
+      "size": [
+        210,
+        26
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 487
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            884
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModifyLTXModel"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 317,
+      "type": "TorchCompileLTXModel",
+      "pos": [
+        1430,
+        -380
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 885
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            457
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TorchCompileLTXModel"
+      },
+      "widgets_values": [
+        "inductor",
+        false,
+        "default",
+        true
+      ]
+    },
+    {
+      "id": 473,
+      "type": "SetNode",
+      "pos": [
+        1460,
+        310
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 746
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_BASE FOLDER",
+      "properties": {
+        "previousName": "BASE FOLDER"
+      },
+      "widgets_values": [
+        "BASE FOLDER"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "RandomNoise",
+      "pos": [
+        1960,
+        -670
+      ],
+      "size": [
+        262.22222900390625,
+        82
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "link": 781,
+          "widget": {
+            "name": "noise_seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            698
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "NOISE"
+        }
+      ],
+      "title": "FLUX SEED",
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        972131216054413,
+        "fixed"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 437,
+      "type": "SetNode",
+      "pos": [
+        1147.81640625,
+        1928.464599609375
+      ],
+      "size": [
+        211.60000610351562,
+        58
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "link": 914
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FLUX_PULID_MODEL",
+      "properties": {
+        "previousName": "FLUX_PULID_MODEL"
+      },
+      "widgets_values": [
+        "FLUX_PULID_MODEL"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 22,
+      "type": "BasicGuider",
+      "pos": [
+        1465.3076171875,
+        990
+      ],
+      "size": [
+        262.22222900390625,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 912,
+          "slot_index": 0,
+          "label": "model"
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 87,
+          "slot_index": 1,
+          "label": "conditioning"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            169,
+            686
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "GUIDER"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 130,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1454.7666015625,
+        1634.1927490234375
+      ],
+      "size": [
+        355.20001220703125,
+        326
+      ],
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 852
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 169
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 170
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 171
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 172
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            173
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 574,
+      "type": "Text Multiline",
+      "pos": [
+        1104,
+        723
+      ],
+      "size": [
+        321.5306701660156,
+        76
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            879
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "IMAGE STRING CONSTANT",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "IMAGES/FLUX_"
+      ]
+    },
+    {
+      "id": 581,
+      "type": "Text Multiline",
+      "pos": [
+        1460,
+        720
+      ],
+      "size": [
+        321.5306701660156,
+        76
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            886
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "AUDIO STRING CONSTANT",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "AUDIO/SA_"
+      ]
+    },
+    {
+      "id": 582,
+      "type": "SetNode",
+      "pos": [
+        1820,
+        570
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 886
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_AUDIO START",
+      "properties": {
+        "previousName": "AUDIO START"
+      },
+      "widgets_values": [
+        "AUDIO START"
+      ]
+    },
+    {
+      "id": 579,
+      "type": "LTXPerturbedAttention",
+      "pos": [
+        1366.33056640625,
+        -587.6795654296875
+      ],
+      "size": [
+        243.60000610351562,
+        126
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 884
+        },
+        {
+          "name": "attn_override",
+          "type": "ATTN_OVERRIDE",
+          "link": 883,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            885
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXPerturbedAttention"
+      },
+      "widgets_values": [
+        1,
+        0.25,
+        3
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 512,
+      "type": "Seed",
+      "pos": [
+        1630,
+        -700
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "seed",
+          "type": "SEED",
+          "links": null
+        },
+        {
+          "name": "number",
+          "type": "NUMBER",
+          "links": null
+        },
+        {
+          "name": "float",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "int",
+          "type": "INT",
+          "links": [
+            781,
+            782
+          ],
+          "slot_index": 3
+        }
+      ],
+      "title": "FLUX SEED INT",
+      "properties": {
+        "Node name for S&R": "Seed"
+      },
+      "widgets_values": [
+        404517615974028,
+        "fixed"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 131,
+      "type": "StyleModelApply",
+      "pos": [
+        -12.692377090454102,
+        956
+      ],
+      "size": [
+        362.0671081542969,
+        122
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 182
+        },
+        {
+          "name": "style_model",
+          "type": "STYLE_MODEL",
+          "link": 175
+        },
+        {
+          "name": "clip_vision_output",
+          "type": "CLIP_VISION_OUTPUT",
+          "link": 180
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StyleModelApply"
+      },
+      "widgets_values": [
+        1,
+        "multiply"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 194,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": [
+        1095.8779296875,
+        -398.1220703125
+      ],
+      "size": [
+        321.5306701660156,
+        466
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "alphanumeric",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
+    },
+    {
+      "id": 578,
+      "type": "LTXAttnOverride",
+      "pos": [
+        1100.5699462890625,
+        -542.1448364257812
+      ],
+      "size": [
+        246.23223876953125,
+        76
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ATTN_OVERRIDE",
+          "type": "ATTN_OVERRIDE",
+          "links": [
+            883
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXAttnOverride"
+      },
+      "widgets_values": [
+        "14"
+      ]
+    },
+    {
+      "id": 204,
+      "type": "Note",
+      "pos": [
+        -752.5662231445312,
+        880.7015991210938
+      ],
+      "size": [
+        643.3004150390625,
+        367.36175537109375
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "You are a specialized animation prompt enhancer designed to transform image prompts into detailed, cinematic animation prompts that achieve a photorealistic, panavision-quality cinematic look. Your task is to generate a single animation prompt per input, strictly adhering to the following structure:\n\nRules:\nSetting and Context: Describe the environment, atmosphere, and visual details concisely but vividly. Ensure the scene reflects the thematic style (e.g., 60s retrofuturistic dystopia for Globotech settings) with photorealistic precision.\nCamera Setup and Movement: Specify the framing (e.g., wide shot, close-up), lens type (e.g., anamorphic, shallow depth of field), and movements (e.g., pans, tilts, dollies). The camera motion must be fluid and subtle, with no abrupt shifts.\nLighting and Mood: Define the lighting sources, their intensity, and their interplay with the setting to create mood and depth. Highlight dramatic contrasts, glowing neon, or atmospheric haze as appropriate.\nAnimation Dynamics: Detail subtle, natural motions within the frame (e.g., flickering lights, drifting particles) to convey life and immersion. The animation must last no more than five seconds.\nConsistency: Maintain the Globotech dystopian aesthetic with precise attention to retrofuturistic designs, dramatic lighting, and melancholic tones.\n\nIMPORTANT: YOU MUST ANSWER WITH ONLY THE OUTPUT ANIMATION PROMPT BASED ON THE USER'S INPUT, COHERING PERFECTLY TO THE REQUEST, AND THE STRUCTURE OUTLINED AS A SINGLE STRING.\n\nExample Input:\nA lone citizen staring at a holographic screen in a dark alley, illuminated by glitching neon lights.\n\nExample Output:\nThe camera begins with a tight over-the-shoulder shot, focusing on the back of a lone citizen's head framed against a dimly lit alley, the glow of a holographic screen reflected in their neural implant. An anamorphic lens adds a cinematic flare as glitching neon signs stutter overhead, casting fractured hues of pink and cyan onto the wet, uneven pavement. The camera executes a slow pull-back, revealing fragmented graffiti on the walls and discarded mechanical parts littering the alley. Steam wafts gently from a nearby vent, while faint sparks flicker from an exposed wire, adding subtle motion. The ambient hum of electronics and distant, muffled announcements amplify the oppressive yet hauntingly beautiful atmosphere."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 285,
+      "type": "Note",
+      "pos": [
+        -753.8690795898438,
+        1314.5673828125
+      ],
+      "size": [
+        627.010986328125,
+        356.00775146484375
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Objective: You are a movie shot designer with the task of creating detailed image prompts for individual shots that seamlessly fit into the user's described scene.\n\nRules:\n\nGenerate exactly 5 shot prompts that cohesively fill the described scene.\nEach shot should be a single line without any extra paragraphs or text.\nEach shot should follow the format: Precise description of the shot and displayed text.\nMaintain a consistent visual and stylistic theme across all shot prompts.\nDescribe each shot in a way suitable for a text-to-image generator.\nUse only words that describe the visual elements of the shot.\n\nImportant:\nDO NOT INCLUDE ANYTHING OTHER THAN THE LIST OF SINGLE SHOT PROMPTS!\nEACH LINE OF YOUR OUTPUT IS A SINGLE SHOT, NO EMPTY LINES.\nIF WE INTEND TO DISPLAY TEXT, IT MUST BE IN THE FORMAT: with the text: 'text'.\nEACH SHOT DESCRIPTION MUST FOCUS ONLY ON THE VISUAL ELEMENTS AND CAMERA MOTIONS OF THE SHOT.\n\nExample Message: \nan eerie tilt shift claymation\n\nExample Response: \nA tiny, eerie village in a dense, mist-covered forest. Miniature clay houses with warped roofs and crooked chimneys are nestled among twisted, leafless trees. Dimly lit windows flicker, casting long shadows. The forest floor is damp, with winding cobblestone paths. The scene shifts focus to reveal eerie, unmoving clay figures hidden in the mist, their blank eyes staring into the camera.\nA lonely, abandoned train station in the middle of nowhere. The platform is empty, illuminated by a faint greenish glow from old lamps. A broken clock hangs, frozen at midnight. Clay rats scuttle near the tracks, and a lone, shadowy figure appears, then vanishes as the camera shifts focus. Faint fog drifts over the tracks, with eerie silence filling the scene.\nAn old, dusty toy shop filled with creepy, grinning clay dolls and marionettes. Some are half-buried in cobwebs, while others are propped up on sagging wooden shelves. In the flickering candlelight, a music box plays a distorted lullaby as the camera tilts to reveal a doll turning its head, grinning ominously. Shadows stretch and twist, making the toys seem alive.\nA fog-laden graveyard with tiny, crooked tombstones jutting out of cracked earth. Clay crows perch on the stones, their eyes hollow and glinting in the moonlight. A distant sound of tolling bells echoes as the camera shifts, revealing a cloaked, clay figure that lurks, vanishing and reappearing between headstones. Dim candle lights flicker around the graves, adding to the eerie quiet.\nA desolate clay carnival ground, with creaky rides frozen in unnatural positions. The Ferris wheel is broken, and tiny clay clowns with sinister smiles stare blankly, seated in rusted carts. A faint calliope tune plays in the background, warped and offbeat. As the camera tilts and shifts, a shadowy figure with a top hat can be seen lurking in the fog, only to disappear when focused on."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 594,
+      "type": "Note",
+      "pos": [
+        -753.0237426757812,
+        1739.9564208984375
+      ],
+      "size": [
+        629.9539794921875,
+        259.14227294921875
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "LTXV SEED BANK:\n\n404517615974021 - static, face twitches"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 129,
+      "type": "UNETLoader",
+      "pos": [
+        397.4185791015625,
+        946.0098266601562
+      ],
+      "size": [
+        320,
+        82
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            240
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux/flux1-dev-fp8.safetensors",
+        "fp8_e4m3fn"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": [
+        397.4185791015625,
+        1276.0096435546875
+      ],
+      "size": [
+        312.27557373046875,
+        106
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            181
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp16.safetensors",
+        "ViT-L-14-TEXT-detail-improved-hiT-GmP-HF.safetensors",
+        "flux"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 201,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        397.4185791015625,
+        1106.0096435546875
+      ],
+      "size": [
+        316.1378173828125,
+        89.0806884765625
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 240
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            911,
+            912,
+            913,
+            914
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "flux/vhflux_v2_000023500.safetensors",
+        0.2
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 127,
+      "type": "Note",
+      "pos": [
+        -767.0719604492188,
+        -769.2826538085938
+      ],
+      "size": [
+        1799.5423583984375,
+        298.78826904296875
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Load CLIP Vision: https://huggingface.co/Comfy-Org/sigclip_vision_384/blob/main/sigclip_vision_patch14_384.safetensors\n\nLoad Style Model: https://civitai.com/models/969352/flux-adapter-flux1-redux-dev\n\nLoad PuLID Flux Model: https://huggingface.co/guozinan/PuLID/blob/main/pulid_flux_v0.9.1.safetensors\n\n\n\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        892.9573974609375,
+        1430.364501953125
+      ],
+      "size": [
+        320,
+        60
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux-ae.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 559,
+      "type": "GetNode",
+      "pos": [
+        1037.38525390625,
+        1619.9755859375
+      ],
+      "size": [
+        262.22222900390625,
+        58
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            852
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_FLUX_BASE_NOISE",
+      "properties": {},
+      "widgets_values": [
+        "FLUX_BASE_NOISE"
+      ],
+      "color": "#2e2e2e",
+      "bgcolor": "#242121"
+    },
+    {
+      "id": 17,
+      "type": "BasicScheduler",
+      "pos": [
+        1465.3076171875,
+        1240
+      ],
+      "size": [
+        262.22222900390625,
+        110
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 911,
+          "slot_index": 0,
+          "label": "model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            171
+          ],
+          "shape": 3,
+          "label": "SIGMAS"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "beta",
+        10,
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 561,
+      "type": "Image H264 Compression (mtb)",
+      "pos": [
+        1804.2242431640625,
+        1484.7401123046875
+      ],
+      "size": [
+        235.1999969482422,
+        58
+      ],
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 861
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            863
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image H264 Compression (mtb)"
+      },
+      "widgets_values": [
+        32
+      ]
+    },
+    {
+      "id": 310,
+      "type": "UnloadModel",
+      "pos": [
+        1912.540283203125,
+        1613.3450927734375
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "*",
+          "link": 863
+        },
+        {
+          "name": "model",
+          "type": "*",
+          "link": 913,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            915
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnloadModel"
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 267,
+      "type": "easy int",
+      "pos": [
+        1630,
+        -510
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "int",
+          "type": "INT",
+          "links": [
+            363
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "LTXV STEPS",
+      "properties": {
+        "Node name for S&R": "easy int"
+      },
+      "widgets_values": [
+        10
+      ]
+    },
+    {
+      "id": 433,
+      "type": "SetNode",
+      "pos": [
+        1823.91796875,
+        1115.509765625
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "link": 690
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FLUX_SAMPLER",
+      "properties": {
+        "previousName": "FLUX_SAMPLER"
+      },
+      "widgets_values": [
+        "FLUX_SAMPLER"
+      ],
+      "color": "#614a4a",
+      "bgcolor": "#3b2c2c"
+    },
+    {
+      "id": 429,
+      "type": "SetNode",
+      "pos": [
+        1808.8824462890625,
+        986.3493041992188
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "link": 686
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_FLUX_GUIDER",
+      "properties": {
+        "previousName": "FLUX_GUIDER"
+      },
+      "widgets_values": [
+        "FLUX_GUIDER"
+      ],
+      "color": "#3c7878",
+      "bgcolor": "#1c453b"
+    },
+    {
+      "id": 174,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1104,
+        -697
+      ],
+      "size": [
+        321.5306701660156,
+        98
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            487
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            469
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "ltx-video-2b-v0.9.safetensors"
+      ]
+    },
+    {
+      "id": 318,
+      "type": "SetNode",
+      "pos": [
+        1444,
+        -272
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "link": 469
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_LTXV_VAE",
+      "properties": {
+        "previousName": "LTXV_VAE"
+      },
+      "widgets_values": [
+        "LTXV_VAE"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 102,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1145.3076171875,
+        1040
+      ],
+      "size": [
+        211.60000610351562,
+        110
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            172
+          ],
+          "slot_index": 0,
+          "label": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1768,
+        1024,
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 622,
+      "type": "Cache Node",
+      "pos": [
+        2333.45263671875,
+        1803.4697265625
+      ],
+      "size": [
+        430.8000183105469,
+        170
+      ],
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 971,
+          "shape": 7
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_filename",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "image_filename",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "conditioning_filename",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Cache Node"
+      },
+      "widgets_values": [
+        "79894076_cache",
+        "7740709_cache",
+        "20514162_cache",
+        "/home/runner/ComfyUI/input"
+      ]
+    },
+    {
+      "id": 599,
+      "type": "ImageResizeKJ",
+      "pos": [
+        1834.916259765625,
+        1736.013916015625
+      ],
+      "size": [
+        420,
+        266
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 915
+        },
+        {
+          "name": "get_image_size",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "width_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "width_input"
+          },
+          "shape": 7
+        },
+        {
+          "name": "height_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "height_input"
+          },
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            971
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResizeKJ"
+      },
+      "widgets_values": [
+        1216,
+        704,
+        "nearest-exact",
+        false,
+        2,
+        0,
+        0,
+        "center"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 239,
+      "type": "Text Multiline",
+      "pos": [
+        -121.58495330810547,
+        533.5133666992188
+      ],
+      "size": [
+        563.0802001953125,
+        247.5762939453125
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            385
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "IMG PROMPT",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "A red sportscar is driving down a highway through a lush canyon, 60s retrofuturistic look, dystopian, eerie, melancholic, vhs style"
+      ]
+    }
+  ],
+  "links": [
+    [
+      12,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      87,
+      60,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      169,
+      22,
+      0,
+      130,
+      1,
+      "GUIDER"
+    ],
+    [
+      170,
+      16,
+      0,
+      130,
+      2,
+      "SAMPLER"
+    ],
+    [
+      171,
+      17,
+      0,
+      130,
+      3,
+      "SIGMAS"
+    ],
+    [
+      172,
+      102,
+      0,
+      130,
+      4,
+      "LATENT"
+    ],
+    [
+      173,
+      130,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      175,
+      123,
+      0,
+      131,
+      1,
+      "STYLE_MODEL"
+    ],
+    [
+      178,
+      122,
+      0,
+      132,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      180,
+      132,
+      0,
+      131,
+      2,
+      "CLIP_VISION_OUTPUT"
+    ],
+    [
+      181,
+      11,
+      0,
+      134,
+      0,
+      "CLIP"
+    ],
+    [
+      182,
+      134,
+      0,
+      131,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      183,
+      134,
+      0,
+      60,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      240,
+      129,
+      0,
+      201,
+      0,
+      "MODEL"
+    ],
+    [
+      347,
+      257,
+      0,
+      258,
+      0,
+      "*"
+    ],
+    [
+      363,
+      267,
+      0,
+      268,
+      0,
+      "*"
+    ],
+    [
+      385,
+      239,
+      0,
+      134,
+      1,
+      "STRING"
+    ],
+    [
+      457,
+      317,
+      0,
+      312,
+      0,
+      "MODEL"
+    ],
+    [
+      469,
+      174,
+      2,
+      318,
+      0,
+      "VAE"
+    ],
+    [
+      487,
+      174,
+      0,
+      326,
+      0,
+      "MODEL"
+    ],
+    [
+      675,
+      419,
+      0,
+      420,
+      0,
+      "*"
+    ],
+    [
+      679,
+      424,
+      0,
+      425,
+      0,
+      "*"
+    ],
+    [
+      686,
+      22,
+      0,
+      429,
+      0,
+      "*"
+    ],
+    [
+      690,
+      16,
+      0,
+      433,
+      0,
+      "*"
+    ],
+    [
+      698,
+      25,
+      0,
+      441,
+      0,
+      "*"
+    ],
+    [
+      746,
+      467,
+      0,
+      473,
+      0,
+      "*"
+    ],
+    [
+      747,
+      464,
+      0,
+      474,
+      0,
+      "*"
+    ],
+    [
+      748,
+      470,
+      0,
+      475,
+      0,
+      "*"
+    ],
+    [
+      749,
+      466,
+      0,
+      476,
+      0,
+      "*"
+    ],
+    [
+      767,
+      495,
+      0,
+      496,
+      0,
+      "*"
+    ],
+    [
+      781,
+      512,
+      3,
+      25,
+      0,
+      "INT"
+    ],
+    [
+      782,
+      512,
+      3,
+      513,
+      0,
+      "*"
+    ],
+    [
+      852,
+      559,
+      0,
+      130,
+      0,
+      "NOISE"
+    ],
+    [
+      861,
+      8,
+      0,
+      561,
+      0,
+      "IMAGE"
+    ],
+    [
+      863,
+      561,
+      0,
+      310,
+      0,
+      "*"
+    ],
+    [
+      879,
+      574,
+      0,
+      575,
+      0,
+      "*"
+    ],
+    [
+      883,
+      578,
+      0,
+      579,
+      1,
+      "ATTN_OVERRIDE"
+    ],
+    [
+      884,
+      326,
+      0,
+      579,
+      0,
+      "MODEL"
+    ],
+    [
+      885,
+      579,
+      0,
+      317,
+      0,
+      "MODEL"
+    ],
+    [
+      886,
+      581,
+      0,
+      582,
+      0,
+      "*"
+    ],
+    [
+      911,
+      201,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      912,
+      201,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      913,
+      201,
+      0,
+      310,
+      1,
+      "*"
+    ],
+    [
+      914,
+      201,
+      0,
+      437,
+      0,
+      "MODEL"
+    ],
+    [
+      915,
+      310,
+      0,
+      599,
+      0,
+      "IMAGE"
+    ],
+    [
+      971,
+      599,
+      0,
+      622,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 12,
+      "title": "99 - CONTROL PANEL",
+      "bounding": [
+        1070.5380859375,
+        -785.7756958007812,
+        1611.781982421875,
+        1592.3724365234375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "1b - LTXV",
+      "bounding": [
+        2708.213623046875,
+        -726.6834106445312,
+        1920.6265869140625,
+        1445.68896484375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 19,
+      "title": "1a - LTX STG",
+      "bounding": [
+        1090.1251220703125,
+        -660.9550170898438,
+        533.8804931640625,
+        210.74607849121094
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 1,
+      "title": "0b - FLUX PULID",
+      "bounding": [
+        -61.45128631591797,
+        837.3838500976562,
+        2743.01611328125,
+        1176.69384765625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9849732675807649,
+      "offset": [
+        -507.9127132016738,
+        -798.6645286433976
+      ]
+    },
+    "workspace_info": {
+      "id": "oYzKNswvlVDYwnwN0203Z"
+    },
+    "ue_links": [],
+    "node_versions": {
+      "comfy-core": "v0.3.10-28-gcaa6476",
+      "pr-was-node-suite-comfyui-47064894": "1.0.2",
+      "comfyui-easy-use": "1.2.5",
+      "ComfyUI-LTXTricks": "06fed1c7974de7198840209b3b7eb7a84742d460",
+      "comfyui-unload-model": "1.0.1"
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

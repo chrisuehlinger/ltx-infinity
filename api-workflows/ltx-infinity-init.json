@@ -1,0 +1,480 @@
+{
+  "8": {
+    "inputs": {
+      "samples": [
+        "130",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "flux-ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "11": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp16.safetensors",
+      "clip_name2": "ViT-L-14-TEXT-detail-improved-hiT-GmP-HF.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "16": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "17": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 10,
+      "denoise": 1,
+      "model": [
+        "201",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "22": {
+    "inputs": {
+      "model": [
+        "201",
+        0
+      ],
+      "conditioning": [
+        "60",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "25": {
+    "inputs": {
+      "noise_seed": [
+        "512",
+        3
+      ]
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "FLUX SEED"
+    }
+  },
+  "60": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "134",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "102": {
+    "inputs": {
+      "width": 1768,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "122": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "123": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "129": {
+    "inputs": {
+      "unet_name": "flux/flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "130": {
+    "inputs": {
+      "noise": [
+        "25",
+        0
+      ],
+      "guider": [
+        "22",
+        0
+      ],
+      "sampler": [
+        "16",
+        0
+      ],
+      "sigmas": [
+        "17",
+        0
+      ],
+      "latent_image": [
+        "102",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "131": {
+    "inputs": {
+      "strength": 1,
+      "strength_type": "multiply",
+      "conditioning": [
+        "134",
+        0
+      ],
+      "style_model": [
+        "123",
+        0
+      ],
+      "clip_vision_output": [
+        "132",
+        0
+      ]
+    },
+    "class_type": "StyleModelApply",
+    "_meta": {
+      "title": "Apply Style Model"
+    }
+  },
+  "132": {
+    "inputs": {
+      "crop": "center",
+      "clip_vision": [
+        "122",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP Vision Encode"
+    }
+  },
+  "134": {
+    "inputs": {
+      "text": [
+        "239",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "174": {
+    "inputs": {
+      "ckpt_name": "ltx-video-2b-v0.9.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "201": {
+    "inputs": {
+      "lora_name": "flux/vhflux_v2_000023500.safetensors",
+      "strength_model": 0.2,
+      "model": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "239": {
+    "inputs": {
+      "text": "A red sportscar is driving down a highway through a lush canyon, 60s retrofuturistic look, dystopian, eerie, melancholic, vhs style"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "IMG PROMPT"
+    }
+  },
+  "257": {
+    "inputs": {
+      "value": 253
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "FRAMES"
+    }
+  },
+  "267": {
+    "inputs": {
+      "value": 10
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "LTXV STEPS"
+    }
+  },
+  "310": {
+    "inputs": {
+      "value": [
+        "561",
+        0
+      ],
+      "model": [
+        "201",
+        0
+      ]
+    },
+    "class_type": "UnloadModel",
+    "_meta": {
+      "title": "UnloadModel"
+    }
+  },
+  "317": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "dynamic": true,
+      "model": [
+        "579",
+        0
+      ]
+    },
+    "class_type": "TorchCompileLTXModel",
+    "_meta": {
+      "title": "TorchCompileLTXModel"
+    }
+  },
+  "326": {
+    "inputs": {
+      "model": [
+        "174",
+        0
+      ]
+    },
+    "class_type": "ModifyLTXModel",
+    "_meta": {
+      "title": "Modify LTX Model"
+    }
+  },
+  "419": {
+    "inputs": {
+      "value": -4.82
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "RESTORE DENOISE"
+    }
+  },
+  "424": {
+    "inputs": {
+      "value": 15
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "RESTORE STEPS"
+    }
+  },
+  "464": {
+    "inputs": {
+      "text": "LG001"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "PROJECT NAME"
+    }
+  },
+  "466": {
+    "inputs": {
+      "text": "PARTIAL/LTXV_"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "VIDEO STRING CONSTANT (PARTS)"
+    }
+  },
+  "467": {
+    "inputs": {
+      "text": "LTXV_LONG_GENS/"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "BASE_FOLDER"
+    }
+  },
+  "470": {
+    "inputs": {
+      "text": "/"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "/"
+    }
+  },
+  "495": {
+    "inputs": {
+      "text": "MERGED/LTXV_"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "VIDEO STRING CONSTANT (PARTS)"
+    }
+  },
+  "512": {
+    "inputs": {
+      "seed": 404517615974028
+    },
+    "class_type": "Seed",
+    "_meta": {
+      "title": "FLUX SEED INT"
+    }
+  },
+  "561": {
+    "inputs": {
+      "crf": 32,
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "Image H264 Compression (mtb)",
+    "_meta": {
+      "title": "Image H264 Compression (mtb)"
+    }
+  },
+  "574": {
+    "inputs": {
+      "text": "IMAGES/FLUX_"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "IMAGE STRING CONSTANT"
+    }
+  },
+  "578": {
+    "inputs": {
+      "layers": "14"
+    },
+    "class_type": "LTXAttnOverride",
+    "_meta": {
+      "title": "LTX Attention Override"
+    }
+  },
+  "579": {
+    "inputs": {
+      "scale": 1,
+      "rescale": 0.25,
+      "cfg": 3,
+      "model": [
+        "326",
+        0
+      ],
+      "attn_override": [
+        "578",
+        0
+      ]
+    },
+    "class_type": "LTXPerturbedAttention",
+    "_meta": {
+      "title": "LTX Apply Perturbed Attention"
+    }
+  },
+  "581": {
+    "inputs": {
+      "text": "AUDIO/SA_"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "AUDIO STRING CONSTANT"
+    }
+  },
+  "599": {
+    "inputs": {
+      "width": 1216,
+      "height": 704,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": false,
+      "divisible_by": 2,
+      "crop": "center",
+      "image": [
+        "310",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "622": {
+    "inputs": {
+      "latent_suffix": "79894076_cache",
+      "image_suffix": "7740709_cache",
+      "conditioning_suffix": "20514162_cache",
+      "output_path": "/home/runner/ComfyUI/input",
+      "image": [
+        "599",
+        0
+      ]
+    },
+    "class_type": "Cache Node",
+    "_meta": {
+      "title": "Cache Node"
+    }
+  }
+}

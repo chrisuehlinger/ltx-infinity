@@ -1,0 +1,1031 @@
+{
+  "170": {
+    "inputs": {
+      "text": [
+        "753",
+        0
+      ],
+      "clip": [
+        "173",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "171": {
+    "inputs": {
+      "text": "this video is of low quality, blurry, low quality, worst quality, deformed, distorted, disfigured, motion smear, motion artifacts, fused fingers, bad anatomy, weird hand, ugly, text, watermark",
+      "clip": [
+        "173",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "172": {
+    "inputs": {
+      "samples": [
+        "654",
+        0
+      ],
+      "vae": [
+        "650",
+        1
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "173": {
+    "inputs": {
+      "clip_name": "t5xxl_fp16.safetensors",
+      "type": "ltxv"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "179": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "ltxinfinity/segment",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 18,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "703",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "265": {
+    "inputs": {
+      "a": 49,
+      "b": -1
+    },
+    "class_type": "JWIntegerAdd",
+    "_meta": {
+      "title": "Integer Add"
+    }
+  },
+  "327": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 50,
+      "denoise": 1,
+      "model": [
+        "651",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "329": {
+    "inputs": {
+      "sampler_name": "euler_ancestral"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "617": {
+    "inputs": {
+      "images": [
+        "621",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "620": {
+    "inputs": {
+      "latent_suffix": "79894076_cache",
+      "image_suffix": "7740709_cache",
+      "conditioning_suffix": "20514162_cache",
+      "output_path": "/home/runner/ComfyUI/input",
+      "image": [
+        "742",
+        0
+      ]
+    },
+    "class_type": "Cache Node",
+    "_meta": {
+      "title": "Cache Node"
+    }
+  },
+  "621": {
+    "inputs": {
+      "latent_path": "",
+      "image_path": "/home/runner/ComfyUI/input/7740709_cache.image",
+      "conditioning_path": ""
+    },
+    "class_type": "Load Cache",
+    "_meta": {
+      "title": "Load Cache"
+    }
+  },
+  "650": {
+    "inputs": {
+      "ckpt_name": "ltx-video-2b-v0.9.1.safetensors",
+      "dtype": "float32"
+    },
+    "class_type": "LTXVLoader",
+    "_meta": {
+      "title": "🅛🅣🅧 LTXV Loader"
+    }
+  },
+  "651": {
+    "inputs": {
+      "stg_mode": "attention",
+      "block_indices": "14",
+      "model": [
+        "650",
+        0
+      ]
+    },
+    "class_type": "LTXVApplySTG",
+    "_meta": {
+      "title": "🅛🅣🅧 LTXV Apply STG"
+    }
+  },
+  "652": {
+    "inputs": {
+      "preset": "Custom",
+      "width": 768,
+      "height": 512,
+      "frames_number": 49,
+      "frame_rate": 24,
+      "batch": 1,
+      "mixed_precision": true,
+      "img_compression": 29,
+      "model": [
+        "651",
+        0
+      ],
+      "vae": [
+        "650",
+        1
+      ],
+      "conditioning": [
+        "673",
+        0
+      ]
+    },
+    "class_type": "LTXVModelConfigurator",
+    "_meta": {
+      "title": "🅛🅣🅧 LTXV Model Configurator"
+    }
+  },
+  "653": {
+    "inputs": {
+      "cfg": 3,
+      "stg": 1,
+      "rescale": 0.75,
+      "model": [
+        "652",
+        0
+      ],
+      "positive": [
+        "170",
+        0
+      ],
+      "negative": [
+        "171",
+        0
+      ]
+    },
+    "class_type": "STGGuider",
+    "_meta": {
+      "title": "🅛🅣🅧 STG Guider"
+    }
+  },
+  "654": {
+    "inputs": {
+      "noise": [
+        "655",
+        0
+      ],
+      "guider": [
+        "653",
+        0
+      ],
+      "sampler": [
+        "329",
+        0
+      ],
+      "sigmas": [
+        "738",
+        0
+      ],
+      "latent_image": [
+        "652",
+        1
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "655": {
+    "inputs": {
+      "noise_seed": 715856873681861
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "673": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": 768,
+      "height": 512,
+      "crop": "center",
+      "image": [
+        "621",
+        1
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "679": {
+    "inputs": {
+      "image1": [
+        "681",
+        0
+      ],
+      "image2": [
+        "680",
+        0
+      ]
+    },
+    "class_type": "ImageSimilarityScores",
+    "_meta": {
+      "title": "Image Similarity (CLIP & LPIPS)"
+    }
+  },
+  "680": {
+    "inputs": {
+      "batch_index": [
+        "265",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "703",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "LastImage"
+    }
+  },
+  "681": {
+    "inputs": {
+      "batch_index": 0,
+      "length": 1,
+      "image": [
+        "703",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "FirstImage"
+    }
+  },
+  "682": {
+    "inputs": {
+      "text": "0.97607421875",
+      "anything": [
+        "679",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "683": {
+    "inputs": {
+      "text": "1.0",
+      "anything": [
+        "707",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "691": {
+    "inputs": {
+      "comparison": "<",
+      "a": [
+        "679",
+        0
+      ],
+      "b": [
+        "693",
+        0
+      ]
+    },
+    "class_type": "SimpleComparison+",
+    "_meta": {
+      "title": "🔧 Simple Comparison"
+    }
+  },
+  "693": {
+    "inputs": {
+      "value": 0.9890000000000001
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "Float Constant"
+    }
+  },
+  "703": {
+    "inputs": {
+      "method": "mvgd",
+      "strength": 0,
+      "image_ref": [
+        "621",
+        1
+      ],
+      "image_target": [
+        "736",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "Color Match"
+    }
+  },
+  "704": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "ltxinfinity/segment",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 18,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "706": {
+    "inputs": {
+      "batch_index": [
+        "265",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "LastImageOriginal"
+    }
+  },
+  "707": {
+    "inputs": {
+      "image1": [
+        "706",
+        0
+      ],
+      "image2": [
+        "680",
+        0
+      ]
+    },
+    "class_type": "ImageSimilarityScores",
+    "_meta": {
+      "title": "Image Similarity (CLIP & LPIPS)"
+    }
+  },
+  "708": {
+    "inputs": {
+      "comparison": ">",
+      "a": [
+        "707",
+        0
+      ],
+      "b": [
+        "709",
+        0
+      ]
+    },
+    "class_type": "SimpleComparison+",
+    "_meta": {
+      "title": "🔧 Simple Comparison"
+    }
+  },
+  "709": {
+    "inputs": {
+      "value": 0.9700000000000001
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "Float Constant"
+    }
+  },
+  "712": {
+    "inputs": {
+      "boolean": [
+        "708",
+        0
+      ],
+      "on_true": [
+        "691",
+        0
+      ],
+      "on_false": [
+        "713",
+        0
+      ]
+    },
+    "class_type": "easy ifElse",
+    "_meta": {
+      "title": "If else"
+    }
+  },
+  "713": {
+    "inputs": {
+      "value": false
+    },
+    "class_type": "easy boolean",
+    "_meta": {
+      "title": "Boolean"
+    }
+  },
+  "720": {
+    "inputs": {
+      "samples": [
+        "762",
+        0
+      ],
+      "vae": [
+        "759",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "723": {
+    "inputs": {
+      "text": [
+        "750",
+        0
+      ],
+      "clip": [
+        "759",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "727": {
+    "inputs": {
+      "pixels": [
+        "757",
+        0
+      ],
+      "vae": [
+        "759",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "731": {
+    "inputs": {
+      "A or B": [
+        "712",
+        0
+      ],
+      "in": [
+        "703",
+        0
+      ]
+    },
+    "class_type": "easy ab",
+    "_meta": {
+      "title": "A or B"
+    }
+  },
+  "732": {
+    "inputs": {
+      "batch_index": 0,
+      "length": 1,
+      "image": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "FirstImageOriginal"
+    }
+  },
+  "733": {
+    "inputs": {
+      "image1": [
+        "732",
+        0
+      ],
+      "image2": [
+        "706",
+        0
+      ]
+    },
+    "class_type": "ImageSimilarityScores",
+    "_meta": {
+      "title": "Image Similarity (CLIP & LPIPS)"
+    }
+  },
+  "734": {
+    "inputs": {
+      "value": 0.9890000000000001
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "Float Constant"
+    }
+  },
+  "735": {
+    "inputs": {
+      "comparison": "<",
+      "a": [
+        "733",
+        0
+      ],
+      "b": [
+        "734",
+        0
+      ]
+    },
+    "class_type": "SimpleComparison+",
+    "_meta": {
+      "title": "🔧 Simple Comparison"
+    }
+  },
+  "736": {
+    "inputs": {
+      "A or B": [
+        "735",
+        0
+      ],
+      "in": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "easy ab",
+    "_meta": {
+      "title": "A or B"
+    }
+  },
+  "737": {
+    "inputs": {
+      "text": "0.97607421875",
+      "anything": [
+        "733",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "738": {
+    "inputs": {
+      "sigma_shift": [
+        "652",
+        2
+      ],
+      "stretch": true,
+      "terminal": 0.1,
+      "sigmas": [
+        "327",
+        0
+      ]
+    },
+    "class_type": "LTXVShiftSigmas",
+    "_meta": {
+      "title": "🅛🅣🅧 LTXV Shift Sigmas"
+    }
+  },
+  "739": {
+    "inputs": {
+      "text": "true",
+      "anything": [
+        "735",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "742": {
+    "inputs": {
+      "value": [
+        "768",
+        0
+      ]
+    },
+    "class_type": "UnloadAllModels",
+    "_meta": {
+      "title": "UnloadAllModels"
+    }
+  },
+  "743": {
+    "inputs": {
+      "model": "microsoft/Florence-2-base",
+      "precision": "fp16",
+      "attention": "sdpa"
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "DownloadAndLoadFlorence2Model"
+    }
+  },
+  "744": {
+    "inputs": {
+      "string": [
+        "751",
+        2
+      ],
+      "old": "image",
+      "new": "video"
+    },
+    "class_type": "String Replace (mtb)",
+    "_meta": {
+      "title": "String Replace (mtb)"
+    }
+  },
+  "745": {
+    "inputs": {
+      "string": [
+        "744",
+        0
+      ],
+      "old": "photo",
+      "new": "video"
+    },
+    "class_type": "String Replace (mtb)",
+    "_meta": {
+      "title": "String Replace (mtb)"
+    }
+  },
+  "746": {
+    "inputs": {
+      "string": [
+        "745",
+        0
+      ],
+      "old": "painting",
+      "new": "video"
+    },
+    "class_type": "String Replace (mtb)",
+    "_meta": {
+      "title": "String Replace (mtb)"
+    }
+  },
+  "747": {
+    "inputs": {
+      "string": [
+        "746",
+        0
+      ],
+      "old": "illustration",
+      "new": "video"
+    },
+    "class_type": "String Replace (mtb)",
+    "_meta": {
+      "title": "String Replace (mtb)"
+    }
+  },
+  "750": {
+    "inputs": {
+      "action": "append",
+      "tidy_tags": "no",
+      "text_a": [
+        "747",
+        0
+      ],
+      "text_b": "A red sportscar is driving down a highway through a lush canyon, 60s retrofuturistic look, melancholic, vhs style.",
+      "text_c": "The scene is captured in real-life footage."
+    },
+    "class_type": "StringFunction|pysssss",
+    "_meta": {
+      "title": "String Function 🐍"
+    }
+  },
+  "751": {
+    "inputs": {
+      "text_input": "",
+      "task": "more_detailed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 256,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 285091998991985,
+      "image": [
+        "621",
+        1
+      ],
+      "florence2_model": [
+        "743",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "752": {
+    "inputs": {
+      "text": [
+        "750",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "753": {
+    "inputs": {
+      "value": [
+        "750",
+        0
+      ]
+    },
+    "class_type": "UnloadAllModels",
+    "_meta": {
+      "title": "UnloadAllModels"
+    }
+  },
+  "754": {
+    "inputs": {
+      "text": "true",
+      "anything": [
+        "712",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "757": {
+    "inputs": {
+      "value": [
+        "731",
+        0
+      ]
+    },
+    "class_type": "UnloadAllModels",
+    "_meta": {
+      "title": "UnloadAllModels"
+    }
+  },
+  "758": {
+    "inputs": {
+      "text": [
+        "750",
+        0
+      ],
+      "path": "./ComfyUI/output/ltxinfinity/prompt",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_",
+      "filename_number_padding": 4,
+      "file_extension": ".txt",
+      "encoding": "utf-8"
+    },
+    "class_type": "Save Text File",
+    "_meta": {
+      "title": "Save Text File"
+    }
+  },
+  "759": {
+    "inputs": {
+      "ckpt_name": "sdxl/sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "761": {
+    "inputs": {
+      "text": "this video is of low quality, blurry, low quality, worst quality, deformed, distorted, disfigured, motion smear, motion artifacts, fused fingers, bad anatomy, weird hand, ugly, text, watermark",
+      "clip": [
+        "759",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "762": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 0,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "start_at_step": 10,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "759",
+        0
+      ],
+      "positive": [
+        "723",
+        0
+      ],
+      "negative": [
+        "761",
+        0
+      ],
+      "latent_image": [
+        "765",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "763": {
+    "inputs": {
+      "source": "CPU",
+      "seed": 0,
+      "width": 768,
+      "height": 512,
+      "batch_size": 1
+    },
+    "class_type": "BNK_NoisyLatentImage",
+    "_meta": {
+      "title": "Noisy Latent Image"
+    }
+  },
+  "764": {
+    "inputs": {
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 20,
+      "start_at_step": 10,
+      "end_at_step": 10000,
+      "model": [
+        "759",
+        0
+      ]
+    },
+    "class_type": "BNK_GetSigma",
+    "_meta": {
+      "title": "Get Sigma"
+    }
+  },
+  "765": {
+    "inputs": {
+      "strength": [
+        "764",
+        0
+      ],
+      "latents": [
+        "727",
+        0
+      ],
+      "noise": [
+        "766",
+        0
+      ]
+    },
+    "class_type": "BNK_InjectNoise",
+    "_meta": {
+      "title": "Inject Noise"
+    }
+  },
+  "766": {
+    "inputs": {
+      "amount": 49,
+      "samples": [
+        "763",
+        0
+      ]
+    },
+    "class_type": "RepeatLatentBatch",
+    "_meta": {
+      "title": "Repeat Latent Batch"
+    }
+  },
+  "767": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "ltxinfinity/segment",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 18,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "720",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "768": {
+    "inputs": {
+      "batch_index": [
+        "265",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "720",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "LastImage"
+    }
+  }
+}

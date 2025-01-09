@@ -32,7 +32,7 @@ def wait_for_queue():
     
 init_start_time = time.time()
 print("Creating init image")
-queue_prompt(json.load(open('ltx-infinity-init.json')))
+queue_prompt(json.load(open('api-workflows/ltx-infinity-init.json')))
 wait_for_queue()
 free_mem()
 print("Generated init image in " + str(datetime.timedelta(seconds=(time.time() - init_start_time))))
@@ -42,7 +42,7 @@ while i < 600:
   segment_start_time = time.time()
   i += 1
   print("Generating segment #" + str(i))
-  prompt = json.load(open('ltx-infinity-sdxl-unsampling.json'))
+  prompt = json.load(open('api-workflows/ltx-infinity.json'))
   prompt["655"]["inputs"]["noise_seed"] = random.randint(0, 100000000)
   queue_prompt(prompt)
   wait_for_queue()

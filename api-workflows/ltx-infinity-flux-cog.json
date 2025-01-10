@@ -43,42 +43,18 @@
   },
   "173": {
     "inputs": {
-      "clip_name": "t5xxl_fp16.safetensors",
-      "type": "ltxv"
+      "clip_name": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "ltxv",
+      "device": "default"
     },
     "class_type": "CLIPLoader",
     "_meta": {
       "title": "Load CLIP"
     }
   },
-  "179": {
-    "inputs": {
-      "frame_rate": 24,
-      "loop_count": 0,
-      "filename_prefix": "ltxinfinity/segment",
-      "format": "video/h264-mp4",
-      "pix_fmt": "yuv420p",
-      "crf": 18,
-      "save_metadata": true,
-      "trim_to_audio": false,
-      "pingpong": false,
-      "save_output": [
-        "712",
-        0
-      ],
-      "images": [
-        "703",
-        0
-      ]
-    },
-    "class_type": "VHS_VideoCombine",
-    "_meta": {
-      "title": "Video Combine 🎥🅥🅗🅢"
-    }
-  },
   "265": {
     "inputs": {
-      "a": 9,
+      "a": 49,
       "b": -1
     },
     "class_type": "JWIntegerAdd",
@@ -89,10 +65,10 @@
   "327": {
     "inputs": {
       "scheduler": "normal",
-      "steps": 50,
+      "steps": 25,
       "denoise": 1,
       "model": [
-        "651",
+        "765",
         0
       ]
     },
@@ -129,7 +105,7 @@
       "conditioning_suffix": "20514162_cache",
       "output_path": "/home/runner/ComfyUI/input",
       "image": [
-        "742",
+        "760",
         0
       ]
     },
@@ -178,13 +154,13 @@
       "preset": "Custom",
       "width": 768,
       "height": 512,
-      "frames_number": 9,
+      "frames_number": 49,
       "frame_rate": 24,
       "batch": 1,
-      "mixed_precision": true,
-      "img_compression": 29,
+      "mixed_precision": false,
+      "img_compression": 30,
       "model": [
-        "651",
+        "765",
         0
       ],
       "vae": [
@@ -254,7 +230,7 @@
   },
   "655": {
     "inputs": {
-      "noise_seed": 882583456547215
+      "noise_seed": 705026387609400
     },
     "class_type": "RandomNoise",
     "_meta": {
@@ -275,123 +251,6 @@
     "class_type": "ImageScale",
     "_meta": {
       "title": "Upscale Image"
-    }
-  },
-  "679": {
-    "inputs": {
-      "image1": [
-        "681",
-        0
-      ],
-      "image2": [
-        "680",
-        0
-      ]
-    },
-    "class_type": "ImageSimilarityScores",
-    "_meta": {
-      "title": "Image Similarity (CLIP & LPIPS)"
-    }
-  },
-  "680": {
-    "inputs": {
-      "batch_index": [
-        "265",
-        0
-      ],
-      "length": 1,
-      "image": [
-        "703",
-        0
-      ]
-    },
-    "class_type": "ImageFromBatch",
-    "_meta": {
-      "title": "LastImage"
-    }
-  },
-  "681": {
-    "inputs": {
-      "batch_index": 0,
-      "length": 1,
-      "image": [
-        "703",
-        0
-      ]
-    },
-    "class_type": "ImageFromBatch",
-    "_meta": {
-      "title": "FirstImage"
-    }
-  },
-  "682": {
-    "inputs": {
-      "text": "0.97705078125",
-      "anything": [
-        "679",
-        0
-      ]
-    },
-    "class_type": "easy showAnything",
-    "_meta": {
-      "title": "Show Any"
-    }
-  },
-  "683": {
-    "inputs": {
-      "text": "0.99951171875",
-      "anything": [
-        "707",
-        0
-      ]
-    },
-    "class_type": "easy showAnything",
-    "_meta": {
-      "title": "Show Any"
-    }
-  },
-  "691": {
-    "inputs": {
-      "comparison": "<",
-      "a": [
-        "679",
-        0
-      ],
-      "b": [
-        "693",
-        0
-      ]
-    },
-    "class_type": "SimpleComparison+",
-    "_meta": {
-      "title": "🔧 Simple Comparison"
-    }
-  },
-  "693": {
-    "inputs": {
-      "value": 0.9890000000000001
-    },
-    "class_type": "FloatConstant",
-    "_meta": {
-      "title": "Float Constant"
-    }
-  },
-  "703": {
-    "inputs": {
-      "method": "mvgd",
-      "strength": 0,
-      "image_ref": [
-        "621",
-        1
-      ],
-      "image_target": [
-        "736",
-        0
-      ]
-    },
-    "class_type": "ColorMatch",
-    "_meta": {
-      "title": "Color Match"
     }
   },
   "704": {
@@ -431,77 +290,6 @@
     "class_type": "ImageFromBatch",
     "_meta": {
       "title": "LastImageOriginal"
-    }
-  },
-  "707": {
-    "inputs": {
-      "image1": [
-        "706",
-        0
-      ],
-      "image2": [
-        "680",
-        0
-      ]
-    },
-    "class_type": "ImageSimilarityScores",
-    "_meta": {
-      "title": "Image Similarity (CLIP & LPIPS)"
-    }
-  },
-  "708": {
-    "inputs": {
-      "comparison": ">",
-      "a": [
-        "707",
-        0
-      ],
-      "b": [
-        "709",
-        0
-      ]
-    },
-    "class_type": "SimpleComparison+",
-    "_meta": {
-      "title": "🔧 Simple Comparison"
-    }
-  },
-  "709": {
-    "inputs": {
-      "value": 0.9700000000000001
-    },
-    "class_type": "FloatConstant",
-    "_meta": {
-      "title": "Float Constant"
-    }
-  },
-  "712": {
-    "inputs": {
-      "boolean": [
-        "708",
-        0
-      ],
-      "on_true": [
-        "691",
-        0
-      ],
-      "on_false": [
-        "713",
-        0
-      ]
-    },
-    "class_type": "easy ifElse",
-    "_meta": {
-      "title": "If else"
-    }
-  },
-  "713": {
-    "inputs": {
-      "value": false
-    },
-    "class_type": "easy boolean",
-    "_meta": {
-      "title": "Boolean"
     }
   },
   "716": {
@@ -546,8 +334,8 @@
   "719": {
     "inputs": {
       "scheduler": "beta",
-      "steps": 10,
-      "denoise": 0.25,
+      "steps": 25,
+      "denoise": 0.5,
       "model": [
         "716",
         0
@@ -626,9 +414,10 @@
   },
   "724": {
     "inputs": {
-      "clip_name1": "t5xxl_fp16.safetensors",
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
       "clip_name2": "ViT-L-14-TEXT-detail-improved-hiT-GmP-HF.safetensors",
-      "type": "flux"
+      "type": "flux",
+      "device": "default"
     },
     "class_type": "DualCLIPLoader",
     "_meta": {
@@ -660,30 +449,6 @@
       "title": "VAE Encode"
     }
   },
-  "728": {
-    "inputs": {
-      "images": [
-        "680",
-        0
-      ]
-    },
-    "class_type": "PreviewImage",
-    "_meta": {
-      "title": "Preview Image"
-    }
-  },
-  "729": {
-    "inputs": {
-      "images": [
-        "720",
-        0
-      ]
-    },
-    "class_type": "PreviewImage",
-    "_meta": {
-      "title": "Preview Image"
-    }
-  },
   "730": {
     "inputs": {
       "noise_seed": 0
@@ -691,22 +456,6 @@
     "class_type": "RandomNoise",
     "_meta": {
       "title": "RandomNoise"
-    }
-  },
-  "731": {
-    "inputs": {
-      "A or B": [
-        "712",
-        0
-      ],
-      "in": [
-        "680",
-        0
-      ]
-    },
-    "class_type": "easy ab",
-    "_meta": {
-      "title": "A or B"
     }
   },
   "732": {
@@ -741,7 +490,7 @@
   },
   "734": {
     "inputs": {
-      "value": 0.9890000000000001
+      "value": 0.025
     },
     "class_type": "FloatConstant",
     "_meta": {
@@ -750,10 +499,10 @@
   },
   "735": {
     "inputs": {
-      "comparison": "<",
+      "comparison": ">",
       "a": [
         "733",
-        0
+        1
       ],
       "b": [
         "734",
@@ -783,10 +532,10 @@
   },
   "737": {
     "inputs": {
-      "text": "0.97705078125",
+      "text": "0.09488987922668457",
       "anything": [
         "733",
-        0
+        1
       ]
     },
     "class_type": "easy showAnything",
@@ -825,7 +574,62 @@
       "title": "Show Any"
     }
   },
-  "742": {
+  "757": {
+    "inputs": {
+      "value": [
+        "796",
+        0
+      ]
+    },
+    "class_type": "UnloadAllModels",
+    "_meta": {
+      "title": "UnloadAllModels"
+    }
+  },
+  "760": {
+    "inputs": {
+      "batch_index": [
+        "826",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "818",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "LastImage"
+    }
+  },
+  "763": {
+    "inputs": {
+      "feta_weight": 4
+    },
+    "class_type": "LTXFetaEnhance",
+    "_meta": {
+      "title": "LTX Feta Enhance"
+    }
+  },
+  "765": {
+    "inputs": {
+      "feta_weight": 4,
+      "model": [
+        "651",
+        0
+      ],
+      "attn_override": [
+        "823",
+        0
+      ]
+    },
+    "class_type": "LTXFetaEnhance",
+    "_meta": {
+      "title": "LTX Feta Enhance"
+    }
+  },
+  "773": {
     "inputs": {
       "value": [
         "720",
@@ -837,11 +641,89 @@
       "title": "UnloadAllModels"
     }
   },
-  "754": {
+  "774": {
+    "inputs": {
+      "frame_rate": 48,
+      "loop_count": 0,
+      "filename_prefix": "ltxinfinity/segment",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 18,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "818",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "777": {
+    "inputs": {
+      "clip_name": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "sd3",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "791": {
+    "inputs": {
+      "A or B": [
+        "735",
+        0
+      ],
+      "in": [
+        "621",
+        1
+      ]
+    },
+    "class_type": "easy ab",
+    "_meta": {
+      "title": "A or B"
+    }
+  },
+  "792": {
+    "inputs": {
+      "latent_suffix": "79894076_cache",
+      "image_suffix": "7740709_cache",
+      "conditioning_suffix": "20514162_cache",
+      "output_path": "/home/runner/ComfyUI/input",
+      "image": [
+        "793",
+        0
+      ]
+    },
+    "class_type": "Cache Node",
+    "_meta": {
+      "title": "Cache Node"
+    }
+  },
+  "793": {
+    "inputs": {
+      "crf": 32,
+      "image": [
+        "791",
+        1
+      ]
+    },
+    "class_type": "Image H264 Compression (mtb)",
+    "_meta": {
+      "title": "Image H264 Compression (mtb)"
+    }
+  },
+  "794": {
     "inputs": {
       "text": "true",
       "anything": [
-        "712",
+        "735",
         0
       ]
     },
@@ -850,25 +732,369 @@
       "title": "Show Any"
     }
   },
-  "756": {
+  "796": {
     "inputs": {
-      "model_name": "4x_NMKD-Siax_200k.pth"
-    },
-    "class_type": "UpscaleModelLoader",
-    "_meta": {
-      "title": "Load Upscale Model"
-    }
-  },
-  "757": {
-    "inputs": {
-      "value": [
-        "731",
+      "batch_index": [
+        "265",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "736",
         0
       ]
     },
-    "class_type": "UnloadAllModels",
+    "class_type": "ImageFromBatch",
     "_meta": {
-      "title": "UnloadAllModels"
+      "title": "LastImageOriginal"
+    }
+  },
+  "797": {
+    "inputs": {
+      "model": "kijai/CogVideoX-5b-1.5-I2V",
+      "precision": "bf16",
+      "quantization": "disabled",
+      "enable_sequential_cpu_offload": false,
+      "attention_mode": "sdpa",
+      "load_device": "main_device"
+    },
+    "class_type": "DownloadAndLoadCogVideoModel",
+    "_meta": {
+      "title": "(Down)load CogVideo Model"
+    }
+  },
+  "799": {
+    "inputs": {
+      "enable_tiling": true,
+      "noise_aug_strength": 0,
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "vae": [
+        "797",
+        1
+      ],
+      "start_image": [
+        "736",
+        0
+      ]
+    },
+    "class_type": "CogVideoImageEncode",
+    "_meta": {
+      "title": "CogVideo ImageEncode"
+    }
+  },
+  "800": {
+    "inputs": {
+      "num_frames": 49,
+      "steps": 25,
+      "cfg": 6,
+      "seed": 0,
+      "scheduler": "CogVideoXDDIM",
+      "denoise_strength": 0.75,
+      "model": [
+        "797",
+        0
+      ],
+      "positive": [
+        "804",
+        0
+      ],
+      "negative": [
+        "805",
+        0
+      ],
+      "samples": [
+        "799",
+        0
+      ],
+      "image_cond_latents": [
+        "808",
+        0
+      ]
+    },
+    "class_type": "CogVideoSampler",
+    "_meta": {
+      "title": "CogVideo Sampler"
+    }
+  },
+  "801": {
+    "inputs": {
+      "images": [
+        "757",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "802": {
+    "inputs": {
+      "images": [
+        "720",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "803": {
+    "inputs": {
+      "enable_vae_tiling": true,
+      "tile_sample_min_height": 768,
+      "tile_sample_min_width": 768,
+      "tile_overlap_factor_height": 0.2,
+      "tile_overlap_factor_width": 0.2,
+      "auto_tile_size": true,
+      "vae": [
+        "797",
+        1
+      ],
+      "samples": [
+        "800",
+        0
+      ]
+    },
+    "class_type": "CogVideoDecode",
+    "_meta": {
+      "title": "CogVideo Decode"
+    }
+  },
+  "804": {
+    "inputs": {
+      "prompt": "The video shows a red sports car driving on a winding mountain road. The car is in the center of the video and is facing towards the right side of the road. It has a sleek and aerodynamic design with a low profile and sharp angles. The road is surrounded by steep cliffs on both sides, with trees and bushes on the left and right sides. The sky is overcast and the overall mood of the video is dramatic and adventurous.A red sportscar is driving down a highway through a lush canyon, 60s retrofuturistic look, melancholic, vhs style. The scene is captured in real-life footage.",
+      "strength": 1,
+      "force_offload": true,
+      "clip": [
+        "777",
+        0
+      ]
+    },
+    "class_type": "CogVideoTextEncode",
+    "_meta": {
+      "title": "CogVideo TextEncode (Positive Prompt)"
+    }
+  },
+  "805": {
+    "inputs": {
+      "prompt": "this video is of low quality, blurry, low quality, worst quality, deformed, distorted, disfigured, motion smear, motion artifacts, fused fingers, bad anatomy, weird hand, ugly, text, watermark",
+      "strength": 1,
+      "force_offload": true,
+      "clip": [
+        "804",
+        1
+      ]
+    },
+    "class_type": "CogVideoTextEncode",
+    "_meta": {
+      "title": "CogVideo TextEncode (Negative Prompt)"
+    }
+  },
+  "807": {
+    "inputs": {
+      "batch_index": 0,
+      "length": 1,
+      "image": [
+        "736",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "FirstImage"
+    }
+  },
+  "808": {
+    "inputs": {
+      "enable_tiling": false,
+      "noise_aug_strength": 0,
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "vae": [
+        "797",
+        1
+      ],
+      "start_image": [
+        "807",
+        0
+      ],
+      "end_image": [
+        "773",
+        0
+      ]
+    },
+    "class_type": "CogVideoImageEncode",
+    "_meta": {
+      "title": "CogVideo ImageEncode"
+    }
+  },
+  "809": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "817",
+        0
+      ],
+      "image2": [
+        "818",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "810": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "AnimateDiff",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "809",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "817": {
+    "inputs": {
+      "device": "cpu",
+      "image": [
+        "821",
+        0
+      ]
+    },
+    "class_type": "ImageToDevice+",
+    "_meta": {
+      "title": "🔧 Image To Device"
+    }
+  },
+  "818": {
+    "inputs": {
+      "ckpt_name": "rife49.pth",
+      "clear_cache_after_n_frames": 10,
+      "multiplier": 2,
+      "fast_mode": false,
+      "ensemble": true,
+      "scale_factor": 1,
+      "frames": [
+        "803",
+        0
+      ]
+    },
+    "class_type": "RIFE VFI",
+    "_meta": {
+      "title": "RIFE VFI (recommend rife47 and rife49)"
+    }
+  },
+  "820": {
+    "inputs": {
+      "images": [
+        "760",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "821": {
+    "inputs": {
+      "ckpt_name": "rife49.pth",
+      "clear_cache_after_n_frames": 10,
+      "multiplier": 2,
+      "fast_mode": false,
+      "ensemble": true,
+      "scale_factor": 1,
+      "frames": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "RIFE VFI",
+    "_meta": {
+      "title": "RIFE VFI (recommend rife47 and rife49)"
+    }
+  },
+  "823": {
+    "inputs": {
+      "layers": "17"
+    },
+    "class_type": "LTXAttnOverride",
+    "_meta": {
+      "title": "LTX Attention Override"
+    }
+  },
+  "824": {
+    "inputs": {
+      "batch_index": [
+        "265",
+        0
+      ],
+      "length": 1,
+      "image": [
+        "803",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "LastImage"
+    }
+  },
+  "825": {
+    "inputs": {
+      "images": [
+        "824",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "826": {
+    "inputs": {
+      "a": [
+        "828",
+        0
+      ],
+      "b": -1
+    },
+    "class_type": "JWIntegerAdd",
+    "_meta": {
+      "title": "Integer Add"
+    }
+  },
+  "828": {
+    "inputs": {
+      "any": [
+        "818",
+        0
+      ]
+    },
+    "class_type": "easy lengthAnything",
+    "_meta": {
+      "title": "Length Any"
     }
   }
 }

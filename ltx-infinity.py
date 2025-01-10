@@ -14,7 +14,7 @@ def queue_prompt(prompt_workflow):
     request.urlopen(req)  
 
 def free_mem():
-    p = {"free_memory": True, "unload_models": True}
+    p = {"free_memory": True, "unload_models": False}
     data = json.dumps(p).encode('utf-8')
     req =  request.Request("http://127.0.0.1:8188/api/free", data=data)
     request.urlopen(req)    
@@ -42,7 +42,7 @@ while i < 600:
   segment_start_time = time.time()
   i += 1
   print("Generating segment #" + str(i))
-  prompt = json.load(open('api-workflows/ltx-infinity.json'))
+  prompt = json.load(open('api-workflows/ltx-infinity-flux-cog.json'))
   prompt["655"]["inputs"]["noise_seed"] = random.randint(0, 100000000)
   queue_prompt(prompt)
   wait_for_queue()

@@ -271,7 +271,7 @@
   "310": {
     "inputs": {
       "value": [
-        "561",
+        "8",
         0
       ],
       "model": [
@@ -384,19 +384,6 @@
       "title": "FLUX SEED INT"
     }
   },
-  "561": {
-    "inputs": {
-      "crf": 32,
-      "image": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "Image H264 Compression (mtb)",
-    "_meta": {
-      "title": "Image H264 Compression (mtb)"
-    }
-  },
   "574": {
     "inputs": {
       "text": "IMAGES/FLUX_"
@@ -445,8 +432,8 @@
   },
   "599": {
     "inputs": {
-      "width": 1216,
-      "height": 704,
+      "width": 1440,
+      "height": 768,
       "upscale_method": "nearest-exact",
       "keep_proportion": false,
       "divisible_by": 2,
@@ -468,13 +455,26 @@
       "conditioning_suffix": "20514162_cache",
       "output_path": "/home/runner/ComfyUI/input",
       "image": [
-        "599",
+        "623",
         0
       ]
     },
     "class_type": "Cache Node",
     "_meta": {
       "title": "Cache Node"
+    }
+  },
+  "623": {
+    "inputs": {
+      "crf": 32,
+      "image": [
+        "599",
+        0
+      ]
+    },
+    "class_type": "Image H264 Compression (mtb)",
+    "_meta": {
+      "title": "Image H264 Compression (mtb)"
     }
   }
 }
